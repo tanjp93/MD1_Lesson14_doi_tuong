@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xay dung game di chuyen</title>
+</head>
+<body onload="loadFinished()">
+<img src="" width="150px" height="100" id="mario">
+<script>
+    let mario = document.getElementById("mario");
+    mario.style.position = "absolute";
+    mario.style.left = "0px";
+    mario.style.top = "0px";
+
+    class Character {
+        img;
+        speed;
+        constructor(img, speed) {
+            this.img = img;
+            this.speed = speed;
+        }
+        moveLeft() {
+                mario.style.left = parseInt(mario.style.left) - 20 + 'px'
+        }
+        moveRight() {
+                mario.style.left = parseInt(mario.style.left) + 20 + 'px'
+        }
+        moveTop() {
+                mario.style.top = parseInt(mario.style.top) - 20 + 'px'
+        }
+        moveDown(){
+                mario.style.top = parseInt(mario.style.top) + 20 + 'px'
+        }
+        // moveRandom(){
+        //
+        // }
+    }
+
+    function loadFinished() {
+        let marioHatRed = new Character("./img/mario_hidari.jpg", "20")
+        mario.src = marioHatRed.img;
+        let statusTop = true
+        let statusLeft = true
+        setInterval(function () {
+                if (statusTop) {
+                    if (parseInt(mario.style.left) >= window.innerWidth - 150){
+                        statusTop = false;
+                    }
+                    marioHatRed.moveDown()
+                } else {
+                    if (parseInt(mario.style.left) <= 0) {
+                        statusTop = true
+                    }
+                    marioHatRed.moveLeft()
+                }
+                // if (status) {
+                //     if (parseInt(mario.style.top) >= window.innerHeight- 100) {
+                //         status = false;
+                //     }
+                //     marioHatRed.moveTop()
+                // } else {
+                //     if (parseInt(mario.style.top) < 0) {
+                //         status = true
+                //     }
+                //     marioHatRed.moveDown()
+                // }
+            }
+            ,
+            100
+        )
+    }
+</script>
+</body>
+</html>

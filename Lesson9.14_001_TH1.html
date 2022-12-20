@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="1000px" height="500px" style="border:1px solid green " >
+
+</canvas>
+<script>
+    function drawCircle(a,b,c,d,e) {
+        var circle=document.getElementById("myCanvas");
+        var ctx=circle.getContext("2d");
+        var f=e*Math.PI
+        let colors = ["red","blue","yellow","green","Orange ","Pink" ]
+        ctx.beginPath();
+        ctx.fillStyle= colors[Math.floor(Math.random() * 6)]
+        ctx.arc(a,b,c,d,f)
+        ctx.fill()
+        ctx.closePath()
+        return ctx.arc(a,b,c,d,f)
+    }
+    function drawRect(x,y,w,h) {
+        var rect=document.getElementById("myCanvas")
+        var rectCtx=rect.getContext("2d");
+        let colors = ["red","blue","yellow","green","Orange ","Pink" ];
+        rectCtx.beginPath();
+        rectCtx.fillStyle=colors[Math.floor(Math.random()*6)]
+        rectCtx.rect(x,y,w,h);
+        rectCtx.fill()
+        rectCtx.stroke()
+        recCtx.closePath();
+        return  rectCtx.rect(x,y,w,h);
+    }
+    // var rec=document.getElementById("myCanvas");
+    // var recCtx=rec.getContext("2d");
+    // recCtx.beginPath();
+    // recCtx.fillStyle="yellow";
+    // recCtx.rect(0, 0 , 80,30 )
+    // recCtx.fill()
+    // recCtx.stroke()
+    // recCtx.closePath();
+    let drawCircle1=drawCircle(40,60,30,0,2);
+    let drawCircle2=drawCircle(500,60,30,0,2);
+    let drawCircle3=drawCircle(960,60,30,0,2);
+    let drawRect1=drawRect(0,0,80,30);
+    let drawRect2=drawRect(500,0,80,30);
+    let drawRect3=drawRect(960,0,80,30);
+
+</script>
+</body>
+</html>

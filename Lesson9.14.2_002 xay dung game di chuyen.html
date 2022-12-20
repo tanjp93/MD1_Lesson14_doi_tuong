@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="moveRandom()">
+<img src="" width="150px" height="100" id="mario">
+<script>
+    let myMario = document.getElementById("mario");
+    let mario = myMario.style
+    mario.position = "absolute";
+    mario.left = 0 + "px";
+    mario.top = 0 + "px"
+    class Mario {
+        speed;
+        img;
+        x;
+        y;
+
+        constructor(speed, img, x, y) {
+            this.speed = speed;
+            this.img = img;
+            this.x = x;
+            this.y = y;
+        }
+
+        moveLeft() {
+            mario.left = parseInt(mario.left) - this.speed + "px";
+        }
+
+        moveRight() {
+            mario.left = parseInt(mario.left) + this.speed + "px";
+        }
+
+        moveTop() {
+            mario.top = parseInt(mario.top) - this.speed + "px";
+        }
+
+        moveDown() {
+            mario.top = parseInt(mario.top) + this.speed + "px";
+        }
+    }
+    function moveRandom() {
+        let marioSon = new Mario(20, "./img/mario_hidari.jpg", mario.left, mario.top);
+        myMario.src = marioSon.img;
+        setInterval(function () {
+            if (parseInt(mario.left)<window.innerWidth-150 && parseInt(mario.top)==0){
+                marioSon.moveRight()
+            }else if (parseInt(mario.top)<window.innerHeight-150 && parseInt(mario.left)>0){
+            marioSon.moveDown()
+            }else if (parseInt(mario.left)>0){
+                marioSon.moveLeft()
+            }else if (parseInt(mario.top)>0){
+                marioSon.moveTop()
+            }
+        }, 100)
+    }
+
+</script>
+</body>
+</html>

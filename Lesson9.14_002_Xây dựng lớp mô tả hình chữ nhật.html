@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            color: rgb(254, 255, 255);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table {
+            margin-right: auto;
+            margin-left: auto;
+        }
+    </style>
+
+</head>
+<body>
+<div>
+    <table>
+        <caption>Tinh Dien Tich, Chu Vi hinh chu nhat</caption>
+        <tr>
+            <td>Nhap chieu dai</td>
+            <td><input id="width" type="number" placeholder=" input width "></td>
+        </tr>
+        <tr>
+            <td> Nhap chieu cao</td>
+            <td><input id="height" type="number" placeholder="input height "></td>
+        </tr>
+    </table>
+</div>
+<canvas id="myCanvas" width="1000px" height="600px" style="border: solid 1px red ">
+    <script>
+        let canvar = document.getElementById("myCanvas")
+        let w = document.getElementById("width").value;
+        let h = document.getElementById("height").value;
+        let ctx = canvar.getContext("2d")
+        console.log(canvar)
+        console.log(ctx)
+
+        class rect {
+            x;
+            y;
+            w;
+            h;
+
+            constructor(width, height, area, perimeter) {
+                this.x = x
+                this.y = y
+                this.w = w
+                this.h = h
+            }
+            drawRect(ctx, canvas) {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                ctx.beginPath()
+                this.radius = Math.floor(Math.random() * 80)
+                ctx.fillStyle = this.getRandomColor()
+                ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+                ctx.fill()
+                ctx.closePath()
+            }
+        }
+
+    </script>
+</canvas>
+
+
+</body>
+</html>

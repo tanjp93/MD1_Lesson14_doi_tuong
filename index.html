@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="marioRun()">
+<img id="mario" src="img/mario_migi.jpg" height="100" width="150"/>
+<script>
+    let mario = document.getElementById("mario");
+    mario.style.position = "absolute"
+    mario.style.top = 0;
+    mario.style.left = 0;
+
+    class MyClass {
+        speed;
+        img
+
+        constructor(speed, img) {
+            this.speed = speed;
+            this.img = img;
+        }
+
+        getMoveRight() {
+            mario.style.left = parseInt(mario.style.left) + this.speed + "px";
+            return mario.style.left
+        }
+
+        getMoveLeft() {
+            mario.style.left = parseInt(mario.style.left) - this.speed + "px";
+            return mario.style.left
+        }
+
+        getMoveUp() {
+            mario.style.top = parseInt(mario.style.top) - this.speed + "px";
+            return mario.style.left
+        }
+
+        getMoveDown() {
+            mario.style.top = parseInt(mario.style.top) + this.speed + "px";
+            return mario.style.left
+        }
+    }
+
+    function marioRun() {
+        let marioSon = new MyClass(20, "./img/mario_hidari.jpg");
+        mario.src = marioSon.img;
+        setInterval(function () {
+            if (parseInt(mario.style.left) < (window.innerWidth-150) && parseInt(mario.style.top) == 0) {
+                marioSon.getMoveRight()
+            } else if (parseInt(mario.style.top) < window.innerHeight-100&& parseInt(mario.style.left) > 0 ) {
+                marioSon.getMoveDown()
+            } else if (parseInt(mario.style.left) > 0 ) {
+                marioSon.getMoveLeft()
+            } else if (parseInt(mario.style.top) > 0) {
+                marioSon.getMoveUp()
+            }
+        }, 100)
+
+    }
+</script>
+</body>
+</html>
