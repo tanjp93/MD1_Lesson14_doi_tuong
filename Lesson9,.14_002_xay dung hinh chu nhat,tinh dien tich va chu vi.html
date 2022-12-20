@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="text-align: center">
+  <input id="width" type="text" placeholder="Nhập chiều dài"><br>
+  <input id="height" type="text" placeholder="Nhập chiều rộng"><br>
+  <button onclick="calculate()">Calculate</button> <button onclick="reset()">Reset</button>
+  <p id="result"></p><br>
+</div>
+<canvas id="canvas" width="800px" height="800px" style="border: 1px solid red"></canvas>
+  <script>
+    class Rect{
+      width;
+      height;
+      constructor(width, height) {
+        this.width = width;
+        this.height = height;
+      }
+      getWidth(){
+        return this.width
+      }
+      getHeight(){
+        return this.height
+      }
+      getArea(){
+        return this.height*this.width
+      }
+      getPerimeter(){
+        return this.height*2+this.width*2
+      }
+    }
+    function calculate(){
+      let canvas=document.getElementById("canvas").getContext("2d")
+      let widthInput=+document.getElementById("width").value;
+      let heightInput=+document.getElementById("height").value;
+      let rect= new Rect();
+      rect.width=widthInput;
+      rect.height=heightInput;
+      document.getElementById('result').innerHTML="Dien tich la"+rect.getArea() +"<br>"+ "Chu vi la"+ rect.getPerimeter();
+      canvas.beginPath()
+      canvas.rect(100,100,widthInput,heightInput);
+      canvas.stroke()
+      canvas.closePath()
+    }
+    function reset() {
+      document.getElementById("width").value="";
+      document.getElementById("height").value="";
+      document.getElementById("result").innerHTML="";
+      canvas.clearRect(0,0,800,800)
+    }
+  </script>
+
+</body>
+</html>
