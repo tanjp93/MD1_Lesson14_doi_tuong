@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+  <tr>
+    <td><input id="temC" type="number" min="-273" placeholder="Nhap nhiet do"></td>
+      <td><button onclick="change()">Change</button></td>
+  </tr>
+    <tr>
+        <td id="changeToF"></td>
+        <td id="changeToK"></td>
+    </tr>
+</table>
+<script>
+    class TemperateC{
+        temperateC;
+        constructor(temperateC) {
+            this.temperateC = temperateC;
+        }
+        getToF(){
+            return this.temperateC*1.8+32
+        }
+        getToKevin(){
+            return this.temperateC+273.15;
+        }
+    }
+    function change() {
+        let tempC= +document.getElementById("temC").value;
+        let temVN= new TemperateC(tempC);
+        let toF=temVN.getToF();
+        let toKevin=temVN.getToKevin();
+        document.getElementById("changeToF").innerHTML=tempC +" C" +"=" + toF+"F"
+        document.getElementById("changeToK").innerHTML=tempC +"C" +"=" + toKevin+"K"
+    }
+</script>
+</body>
+</html>

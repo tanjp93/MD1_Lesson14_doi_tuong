@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MEO AN CHUOT</title>
+</head>
+<body>
+<script>
+  class Animal{
+    name;
+    weight;
+    speed;
+    constructor(name, weight, speed) {
+      this.name = name;
+      this.weight = weight;
+      this.speed = speed;
+    }
+
+    getName() {
+      return this.name;
+    }
+
+    getWeight() {
+      return this.weight;
+    }
+
+    getSpeed() {
+      return this.speed;
+    }
+
+
+    setName(name) {
+      this.name = name;
+    }
+
+    setWeight(weight) {
+      this.weight = weight;
+    }
+
+    setSpeed(value) {
+      this.speed = value;
+    }
+    say(message){
+      console.log(message)
+    }
+  }
+  class Mouse extends Animal{
+    isLive;
+    constructor(name, weight, speed, isLive) {
+      super(name, weight, speed);
+      this.isLive = isLive;
+    }
+    getIsLive() {
+      return this.isLive;
+    }
+    setIsLive(mouse){
+      this.isLive= mouse
+    }
+    // say(message) {
+    //   super.say(message);
+    // }
+    //
+  }
+  class Cat extends Animal{
+
+    constructor(name, weight, speed) {
+      super(name, weight, speed);
+    }
+    catchMouse(mouse){
+      if (super.getSpeed()>mouse.getSpeed()){
+        console.log('Bắt được chuột')
+        mouse.setIsLive(false)
+      }else {
+        console.log('a k bắt đk nó')
+      }
+    }
+    eatMouse(mouse){
+      if (mouse.getIsLive()){
+        console.log('không ăn được')
+      }else {
+        console.log('ngoap')
+        super.setWeight(super.getWeight()+mouse.getWeight())
+        console.log(super.getWeight())
+        console.log('ăn cho lắm vào' + super.getWeight())
+      }
+    }
+  }
+  let mouse = new Mouse('jerry', 2, 40, true)
+  let mouse1 = new Mouse('jerry1',2,70,true)
+  let cat = new Cat('tom',5,50)
+</script>
+</body>
+</html>

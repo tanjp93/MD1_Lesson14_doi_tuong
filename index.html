@@ -4,60 +4,43 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body onload="marioRun()">
-<img id="mario" src="img/mario_migi.jpg" height="100" width="150"/>
+<body>
+<input type="text" id="doc" min="-273">
+<button onclick="doinhietDo()">đổi</button>
+<p id="doF"></p>
+<p id="doK"></p>
 <script>
-    let mario = document.getElementById("mario");
-    mario.style.position = "absolute"
-    mario.style.top = 0;
-    mario.style.left = 0;
+    class Temperature{
+        doC;
 
-    class MyClass {
-        speed;
-        img
-
-        constructor(speed, img) {
-            this.speed = speed;
-            this.img = img;
+        constructor(doC) {
+            this.doC = doC;
+        }
+        changeCtoF(){
+            return this.doC*1.8+32;
+        }
+        changCtoKenvin() {
+            return this.doC+273.15;
         }
 
-        getMoveRight() {
-            mario.style.left = parseInt(mario.style.left) + this.speed + "px";
-            return mario.style.left
-        }
 
-        getMoveLeft() {
-            mario.style.left = parseInt(mario.style.left) - this.speed + "px";
-            return mario.style.left
-        }
 
-        getMoveUp() {
-            mario.style.top = parseInt(mario.style.top) - this.speed + "px";
-            return mario.style.left
-        }
+    }
+    function doinhietDo() {
+        let ValueInput= +document.getElementById('doc').value;
+        let temperature = new Temperature(ValueInput);
 
-        getMoveDown() {
-            mario.style.top = parseInt(mario.style.top) + this.speed + "px";
-            return mario.style.left
+
+        if (ValueInput < -273){
+            alert("giá trị nhỏ nhất -273 độ")
+        }
+        else{
+            document.getElementById('doF').innerHTML="độ F là: "+ temperature.changeCtoF();
+            document.getElementById('doK').innerHTML="độ K là "+ temperature.changCtoKenvin();
+
         }
     }
 
-    function marioRun() {
-        let marioSon = new MyClass(20, "./img/mario_hidari.jpg");
-        mario.src = marioSon.img;
-        setInterval(function () {
-            if (parseInt(mario.style.left) < (window.innerWidth-150) && parseInt(mario.style.top) == 0) {
-                marioSon.getMoveRight()
-            } else if (parseInt(mario.style.top) < window.innerHeight-100&& parseInt(mario.style.left) > 0 ) {
-                marioSon.getMoveDown()
-            } else if (parseInt(mario.style.left) > 0 ) {
-                marioSon.getMoveLeft()
-            } else if (parseInt(mario.style.top) > 0) {
-                marioSon.getMoveUp()
-            }
-        }, 100)
-
-    }
 </script>
 </body>
 </html>
